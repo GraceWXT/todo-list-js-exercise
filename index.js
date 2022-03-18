@@ -39,11 +39,12 @@ function newTask(title, description) {
     description: description,
     complete: false,
     // prints out the provided task's details
-    logTaskState: () => {
+    logTaskState: function() {
       console.log(`${this.title} has${this.complete ? " " : " not "}been completed.`);
+      // console.log(this);
     },
     // marks the provided task as completed
-    completeTask: () => {
+    completeTask: function() {
       this.complete = true;
     }
   };
@@ -54,10 +55,15 @@ function newTask(title, description) {
 const task1 = newTask("Clean Cat Litter", "Take all the 💩 out of the litter box");
 const task2 = newTask("Do Laundry", "😨");
 const tasks = [task1, task2];
+console.log(task1.title);
 
-logTaskState(task1); // Clean Cat Litter has not been completed
-completeTask(task1);
-logTaskState(task1); // Clean Cat Litter has been completed
+task1.logTaskState(); // Clean Cat Litter has not been completed
+task1.completeTask();
+task1.logTaskState(); // Clean Cat Litter has been completed
+
+task2.logTaskState(); // Clean Cat Litter has not been completed
+task2.completeTask();
+task2.logTaskState(); // Clean Cat Litter has been completed
 
 // for now, let's just make sure we see our tasks
 console.log(JSON.stringify(tasks));
